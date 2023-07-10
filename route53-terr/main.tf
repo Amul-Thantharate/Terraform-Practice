@@ -5,13 +5,14 @@ provider "aws" {
 
 
 resource "aws_instance" "IP_example" {
-    ami           = lookup(var.ami_id, var.region)
+    ami           = var.ami_id
     instance_type = var.instance_type
     subnet_id     = aws_subnet.public_1.id
 
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
     private_ip = "10.0.1.10"
     key_name = aws_key_pair.terraform.key_name
+    user_data = file("user_data.sh")
     tags = {
     Name = "Private_IP"
     }

@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "easy_aws" {
-    name = "hop-ki-server.live"
+    name = "allnextcloud.tech"
 
     tags = {
     Environment = "dev"
@@ -8,7 +8,7 @@ resource "aws_route53_zone" "easy_aws" {
 
 resource "aws_route53_record" "www" {
     zone_id = aws_route53_zone.easy_aws.zone_id
-    name    = "www.hop-ki-server.live"
+    name    = "www.allnextcloud.tech"
     type    = "A"
     ttl     = "300"
     records = [aws_eip.eip.public_ip]
