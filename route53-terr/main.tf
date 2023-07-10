@@ -12,15 +12,6 @@ resource "aws_instance" "IP_example" {
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
     private_ip = "10.0.1.10"
     key_name = aws_key_pair.terraform.key_name
-    user_data = <<EOF
-    #! /bin/bash
-                sudo yum update -y
-    sudo yum install -y httpd.x86_64
-    sudo service httpd start
-    sudo service httpd enable
-    echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
-    EOF
-
     tags = {
     Name = "Private_IP"
     }
