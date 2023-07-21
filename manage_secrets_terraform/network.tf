@@ -1,4 +1,21 @@
 ## Define the local variable ##
+terraform {
+   required_providers {
+     aws = {
+       source = "hashicorp/aws"
+       version = "3.56.0"
+     }
+   }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+
+
+
+
 locals {
  service_name = "Test"
  common_tags = {
